@@ -1,8 +1,15 @@
+package model;
+
 public class Rover {
 
+    Grid plateau;
     private int x = 0;
     private int y = 0;
     private char direction = 'N';
+
+    public Rover(Grid plateau) {
+        this.plateau = plateau;
+    }
 
     //Method to rotate right for every direction
     public String rotateRight(String value) {
@@ -43,11 +50,15 @@ public class Rover {
     }
 
     //method for rover to reach at the initial position from default position
-    public String moveToInitialPositionAndDirection(String defaultPositionOfRover) {
+    public String moveToInitialPositionAndDirection(String PositionOfRover) {
 
-        char[] initialPosition = defaultPositionOfRover.toUpperCase().replace(" ", "").toCharArray();
-        x = initialPosition[0];
-        y = initialPosition[1];
+        char[] initialPosition = PositionOfRover.toUpperCase().replace(" ", "").toCharArray();
+        x = Integer.parseInt(String.valueOf(initialPosition[0]));
+        if (x > plateau.getMaxWidth())
+            throw new IllegalArgumentException("Your rover initial position is outside/on edge of grid");
+        y = Integer.parseInt(String.valueOf(initialPosition[1]));
+        if (y > plateau.getMaxHeight())
+            throw new IllegalArgumentException("Your rover initial position is outside/on edge of grid");
         direction = initialPosition[2];
         return initialPosition[0] + " " + initialPosition[1] + " " + direction;
     }
