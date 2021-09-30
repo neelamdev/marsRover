@@ -45,10 +45,10 @@ public class MarsRoverMain {
         else
             rover=new Rover(defaultGrid);
         String rover1FinalPosition = rover.moveWithDirection(initialPositionAndDirectionOfRover1, instructionsToMoveForRover1);
-        System.out.println(rover1FinalPosition);
+        System.out.println("Position and direction of rover1  :"+rover1FinalPosition);
 
         String rover2FinalPosition = rover.moveWithDirection(initialPositionAndDirectionOfRover2, instructionsToMoveForRover2);
-        System.out.println(rover2FinalPosition);
+        System.out.println("Position and direction of rover1  :"+rover2FinalPosition);
 
 
     }

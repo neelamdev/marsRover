@@ -2,8 +2,6 @@ import model.Grid;
 import model.Rover;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-
-//import static org.junit.jupiter.api.AssertThrows.assertThrows;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class RoverTest {
@@ -55,14 +53,22 @@ public class RoverTest {
         Grid gridplateau = new Grid(5,5);
         Rover rover = new Rover(gridplateau);
         //act
-//        Throwable throwable = assertThrows(Throwable.class, () -> {
-//            throw new Exception();
-//        });
-//        assertNotNull(throwable);
-        //assertEquals("An exception was thrown!", e.getMessage());
         String initialMove = rover.moveToInitialPositionAndDirection(initialPositionOfRover);
         //assert
         assertEquals(initialPositionOfRover, initialMove);
+    }
+
+    //test to catch Exception if initial position of rover is outside the scope of our Grid
+    @ParameterizedTest
+    @CsvSource({"0 0 N,1 7 N" ,"0 0 N,6 5 N"})
+    public void moveToInitialPositionAndThrowExceptionTest(String defaultPositionOfRover,String initialPositionOfRover) {
+        //arrange
+        Grid gridplateau = new Grid(5,5);
+        Rover rover = new Rover(gridplateau);
+        //act and assert
+        assertThrows(IllegalArgumentException.class,()->rover.moveToInitialPositionAndDirection(initialPositionOfRover),
+                "Your rover initial position is outside of grid");
+
     }
 
     //Given the initial position of rover and instructions to move then rover change directions correctly

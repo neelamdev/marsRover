@@ -55,10 +55,10 @@ public class Rover {
         char[] initialPosition = PositionOfRover.toUpperCase().replace(" ", "").toCharArray();
         x = Integer.parseInt(String.valueOf(initialPosition[0]));
         if (x > plateau.getMaxWidth())
-            throw new IllegalArgumentException("Your rover initial position is outside/on edge of grid");
+            throw new IllegalArgumentException();
         y = Integer.parseInt(String.valueOf(initialPosition[1]));
         if (y > plateau.getMaxHeight())
-            throw new IllegalArgumentException("Your rover initial position is outside/on edge of grid");
+            throw new IllegalArgumentException();
         direction = initialPosition[2];
         return initialPosition[0] + " " + initialPosition[1] + " " + direction;
     }
