@@ -50,22 +50,23 @@ public class Rover {
     }
 
     //method for rover to reach at the initial position from default position
-    public String moveToInitialPositionAndDirection(String PositionOfRover) {
+    public String moveToRightPositionAndDirection(String PositionOfRover) {
 
         char[] initialPosition = PositionOfRover.toUpperCase().replace(" ", "").toCharArray();
         x = Integer.parseInt(String.valueOf(initialPosition[0]));
+        System.out.println(x + "    " + plateau.getMaxWidth());
         if (x > plateau.getMaxWidth())
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(" rover  position is outside of grid");
         y = Integer.parseInt(String.valueOf(initialPosition[1]));
         if (y > plateau.getMaxHeight())
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(" rover  position is outside of grid");
         direction = initialPosition[2];
         return initialPosition[0] + " " + initialPosition[1] + " " + direction;
     }
 
     //method for rover to reach at final position by following the instructions and return the final position as String
     public String moveWithDirection(String initialPositionandDirectionOfRover, String instructionToMove) {
-        String currentPositionOfRover = moveToInitialPositionAndDirection(initialPositionandDirectionOfRover);
+        String currentPositionOfRover = moveToRightPositionAndDirection(initialPositionandDirectionOfRover);
         char[] instructionChar = instructionToMove.toUpperCase().replace(" ", "").toCharArray();
         for (char instructon : instructionChar) {
             if (instructon == 'L')
@@ -76,7 +77,8 @@ public class Rover {
                 currentPositionOfRover = move(currentPositionOfRover);
 
         }
-        return currentPositionOfRover;
+        System.out.println(currentPositionOfRover);
+        return moveToRightPositionAndDirection(currentPositionOfRover);
     }
 
 

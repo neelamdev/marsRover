@@ -7,14 +7,14 @@ import java.util.Scanner;
 
 public class MarsRoverMain {
     public static void main(String[] args) {
-        //Example input
+        //Example happy path input
         //5 5
         //1 2 N
         //LMLMLMLMM
         //3 3 E
         //MMRMMRMRRM
         Rover rover;
-        Grid defaultGrid = new Grid(0,0);
+        Grid defaultGrid = new Grid(0, 0);
         Scanner userInput = new Scanner(System.in);
 
         // plateau maxHeight and maxWidth
@@ -39,16 +39,16 @@ public class MarsRoverMain {
         System.out.println("Please enter instructions to change direction and move for rover2");
         String instructionsToMoveForRover2 = userInput.nextLine();
 
-        Grid plateau = new Grid(maxCoordinatesForPlateauChar[0], maxCoordinatesForPlateauChar[1]);
-        if(plateau.gridInFirstQuaderant())
+        Grid plateau = new Grid(Integer.parseInt(String.valueOf(maxCoordinatesForPlateauChar[0])), Integer.parseInt(String.valueOf(maxCoordinatesForPlateauChar[1])));
+        if (plateau.gridInFirstQuaderant())
             rover = new Rover(plateau);
         else
-            rover=new Rover(defaultGrid);
+            rover = new Rover(defaultGrid);
         String rover1FinalPosition = rover.moveWithDirection(initialPositionAndDirectionOfRover1, instructionsToMoveForRover1);
-        System.out.println("Position and direction of rover1  :"+rover1FinalPosition);
+        System.out.println("Position and direction of rover1  :" + rover1FinalPosition);
 
         String rover2FinalPosition = rover.moveWithDirection(initialPositionAndDirectionOfRover2, instructionsToMoveForRover2);
-        System.out.println("Position and direction of rover1  :"+rover2FinalPosition);
+        System.out.println("Position and direction of rover2  :" + rover2FinalPosition);
 
 
     }

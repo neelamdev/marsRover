@@ -7,7 +7,7 @@ public class GridTest {
 
 
     @ParameterizedTest
-    @CsvSource({"0,0", "-1,1", "3,-3","-4,-4"})
+    @CsvSource({"0,0", "-1,1", "3,-3", "-4,-4"})
     public void gridWithNegativeOrZeroCoordinatesTest(int xCoordinate, int yCoordinate) {
         //arrange
         Grid roverGrid = new Grid(xCoordinate, yCoordinate);
