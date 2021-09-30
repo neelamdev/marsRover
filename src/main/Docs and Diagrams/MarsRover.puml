@@ -1,0 +1,26 @@
+@startuml
+'https://plantuml.com/class-diagram
+class Grid{
+ int maxWidth
+ int maxHeight
+ boolean gridInFirstQuaderant()
+
+}
+class Rover{
+    Grid plateau;
+    - int x ;
+    - int y ;
+    - char direction ;
+    + String rotateRight(String)
+    + String rotateLeft(String)
+    + String move(String )
+    + String moveToInitialPositionAndDirection(String )
+    + String moveWithDirection(String , String )
+}
+class MarsRoverMain{
+        Rover rover;
+        Grid defaultGrid
+}
+ MarsRoverMain --  Rover
+ MarsRoverMain -- Grid
+@enduml
