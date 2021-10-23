@@ -54,7 +54,6 @@ public class Rover {
 
         char[] initialPosition = PositionOfRover.toUpperCase().replace(" ", "").toCharArray();
         x = Integer.parseInt(String.valueOf(initialPosition[0]));
-        System.out.println(x + "    " + plateau.getMaxWidth());
         if (x > plateau.getMaxWidth())
             throw new IllegalArgumentException(" rover  position is outside of grid");
         y = Integer.parseInt(String.valueOf(initialPosition[1]));
@@ -65,21 +64,18 @@ public class Rover {
     }
 
     //method for rover to reach at final position by following the instructions and return the final position as String
-    public String moveWithDirection(String initialPositionandDirectionOfRover, String instructionToMove) {
-        String currentPositionOfRover = moveToRightPositionAndDirection(initialPositionandDirectionOfRover);
+    public String moveWithDirection(String initialPositionAndDirectionOfRover, String instructionToMove) {
+        String currentPositionOfRover = moveToRightPositionAndDirection(initialPositionAndDirectionOfRover);
         char[] instructionChar = instructionToMove.toUpperCase().replace(" ", "").toCharArray();
-        for (char instructon : instructionChar) {
-            if (instructon == 'L')
+        for (char instruction : instructionChar) {
+            if (instruction == 'L')
                 currentPositionOfRover = rotateLeft(currentPositionOfRover);
-            else if (instructon == 'R')
+            else if (instruction == 'R')
                 currentPositionOfRover = rotateRight(currentPositionOfRover);
-            else if (instructon == 'M')
+            else if (instruction == 'M')
                 currentPositionOfRover = move(currentPositionOfRover);
-
         }
-        System.out.println(currentPositionOfRover);
         return moveToRightPositionAndDirection(currentPositionOfRover);
     }
-
 
 }

@@ -40,7 +40,7 @@ public class MarsRoverMain {
         String instructionsToMoveForRover2 = userInput.nextLine();
 
         Grid plateau = new Grid(Integer.parseInt(String.valueOf(maxCoordinatesForPlateauChar[0])), Integer.parseInt(String.valueOf(maxCoordinatesForPlateauChar[1])));
-        if (plateau.gridInFirstQuaderant())
+        if (plateau.validateValidGridSize())
             rover = new Rover(plateau);
         else
             rover = new Rover(defaultGrid);

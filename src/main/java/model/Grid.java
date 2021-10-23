@@ -26,8 +26,11 @@ public class Grid {
         this.maxHeight = maxHeight;
     }
 
-    public boolean gridInFirstQuaderant() {
-        return maxHeight > 0 && maxWidth > 0;
+    public boolean validateValidGridSize() {
+        if(maxHeight <= 0 || maxWidth <=0)
+            throw new IllegalArgumentException("please provide positive values of grid coordinates");
+        else
+            return true;
 
     }
 
